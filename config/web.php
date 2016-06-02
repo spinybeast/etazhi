@@ -9,6 +9,7 @@ $config = [
     'modules' => [
         'gii' => ['class' => 'yii\gii\Module'],
         'admin' => ['class' => 'app\modules\admin\Module'],
+        'gridview' =>  ['class' => '\kartik\grid\Module']
     ],
     'components' => [
         'urlManager' => [

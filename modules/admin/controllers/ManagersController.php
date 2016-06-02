@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\Managers;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,6 +36,21 @@ class ManagersController extends DefaultController
         $dataProvider = new ActiveDataProvider([
             'query' => Managers::find()->orderBy('priority desc'),
         ]);
+
+        if (Yii::$app->request->post('hasEditable')) {
+            $model = Managers::findOne(Yii::$app->request->post('editableKey'));
+            $out = Json::encode(['output' => '', 'message' => '']);
+            $posted = current($_POST['Managers']);
+            $post = ['Managers' => $posted];
+
+            if ($model->load($post)) {
+                if (!$model->save()) {
+                    $out = Json::encode(['output' => '', 'message' => 'Не удалось сохранить значение']);
+                }
+            }
+            echo $out;
+            Yii::$app->end();
+        }
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

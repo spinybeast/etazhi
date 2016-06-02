@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Exclusives */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Exclusives', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Эксклюзивные предложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="exclusives-view">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Точно удалить?',
                 'method' => 'post',
             ],
         ]) ?>

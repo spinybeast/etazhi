@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Exclusives */
 
-$this->title = 'Create Exclusives';
-$this->params['breadcrumbs'][] = ['label' => 'Exclusives', 'url' => ['index']];
+$this->title = 'Созздать эксклюзив';
+$this->params['breadcrumbs'][] = ['label' => 'Эксклюзивные предложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="exclusives-create">

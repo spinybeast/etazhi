@@ -102,13 +102,13 @@ use zxbodya\yii2\galleryManager\GalleryManager;
         'apiRoute' => 'exclusives/galleryApi'
     ]);?>
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
-<?= $this->registerJs('
+<?php $this->registerJs('
     $("#address").suggestions({
         serviceUrl: "https://dadata.ru/api/v2",
         token: "b6e8f677ffaa72cc02e31e586fa223d9590e5282",

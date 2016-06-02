@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -19,9 +19,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'export' => false,
         'columns' => [
             'name',
-            'priority',
+            [
+                'class' => 'kartik\grid\EditableColumn',
+                'attribute' => 'priority',
+                'editableOptions' => [
+                    'header' => 'Приоритет',
+                    'options' => ['pluginOptions' => ['min' => 0, 'max' => 100]]
+                ],
+                'format' => ['decimal', 0],
+            ],
             'phone',
             'description:ntext',
             [

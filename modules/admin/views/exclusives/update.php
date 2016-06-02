@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Exclusives */
 
-$this->title = 'Редактировать Exclusives: ' . ' ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Exclusives', 'url' => ['index']];
+$this->title = 'Редактировать Эксклюзив: ' . ' ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Эксклюзивные предложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
