@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'url' => '#',
                     'items' => $services,
                     'options' => [
-                        'onclick' => 'toggleServices(this)'
+                        'onclick' => 'toggleServices(this); return false;'
                     ]
                 ];
                 echo Html::beginTag('div', ['class' => 'services well']);
