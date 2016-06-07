@@ -19,6 +19,8 @@ class ExclusivesController extends Controller
 
         return $this->render('index', [
             'exclusives' => $exclusives,
+            'housesCount' => $this->getHousesCount(),
+            'flatsCount' => $this->getFlatsCount(),
             'pages' => $pages,
         ]);
     }
@@ -31,6 +33,8 @@ class ExclusivesController extends Controller
 
         return $this->render('index', [
             'exclusives' => $exclusives,
+            'housesCount' => $this->getHousesCount(),
+            'flatsCount' => $this->getFlatsCount(),
             'pages' => $pages,
 
         ]);
@@ -44,6 +48,8 @@ class ExclusivesController extends Controller
 
         return $this->render('index', [
             'exclusives' => $exclusives,
+            'housesCount' => $this->getHousesCount(),
+            'flatsCount' => $this->getFlatsCount(),
             'pages' => $pages,
 
         ]);
@@ -57,6 +63,8 @@ class ExclusivesController extends Controller
 
         return $this->render('index', [
             'exclusives' => $exclusives,
+            'housesCount' => $this->getHousesCount(),
+            'flatsCount' => $this->getFlatsCount(),
             'pages' => $pages,
 
         ]);
@@ -97,6 +105,26 @@ class ExclusivesController extends Controller
             ->limit($pages->limit)
             ->all();
         return array($pages, $exclusives);
+    }
+
+    private function getHousesCount()
+    {
+        if (Yii::$app->session->has('housesCount')) {
+            return Yii::$app->session->get('housesCount');
+        }
+        $count = Exclusives::find()->where(['type' => Exclusives::HOUSE])->count();
+        Yii::$app->session->set('housesCount', $count);
+        return $count;
+    }
+
+    private function getFlatsCount()
+    {
+        if (Yii::$app->session->has('flatsCount')) {
+            return Yii::$app->session->get('flatsCount');
+        }
+        $count = Exclusives::find()->where(['type' => Exclusives::FLAT])->count();
+        Yii::$app->session->set('flatsCount', $count);
+        return $count;
     }
 
 }

@@ -29,23 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php if (!empty($exclusives)) {
             $active = Yii::$app->session->getFlash('activeButton');
-            $houses = $flats = 0;
-            foreach ($exclusives as $item) {
-                if ($item->type === Exclusives::HOUSE) {
-                    $houses++;
-                } elseif ($item->type === Exclusives::FLAT) {
-                    $flats++;
-                }
-            }
             Pjax::begin(['enablePushState' => false]); ?>
             <div class="filter_panel well">
                 <?= Html::a('Показать все', ['exclusives/index'], ['class' => 'btn btn-primary']) ?>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="btn-group" data-toggle="buttons">
-                    <?php if ((!$active && $houses > 0) || $active) {
+                    <?php if ((!$active && $housesCount > 0) || $active) {
                         echo Html::a('Дом', ['exclusives/house'], ['class' => 'btn btn-default' . ($active === 'house' ? ' active' : '')]);
                     }
-                    if ((!$active && $flats > 0) || $active) {
+                    if ((!$active && $flatsCount > 0) || $active) {
                         echo Html::a('Квартира', ['exclusives/flat'], ['class' => 'btn btn-default' . ($active === 'flat' ? ' active' : '')]);
                     } ?>
                 </div>
