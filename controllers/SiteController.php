@@ -87,7 +87,7 @@ class SiteController extends Controller
     public function actionContact()
     {
         return $this->render('contact', [
-            'managers' => Managers::find()->all(),
+            'managers' => Managers::find()->orderBy('priority desc')->all(),
         ]);
     }
 
